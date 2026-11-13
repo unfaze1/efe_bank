@@ -5,14 +5,14 @@ from pathlib import Path
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-"user.csv"=os.path.join(BASE_DIR, "user.csv")
+"user.csv"=
 veri=st.session_state
 yol=Path(__file__).resolve().parent
 st.header("Account Information", divider="blue" )
 st.image(str(yol/"Gemini_Generated_Image_5y1rqv5y1rqv5y1r.jpg"), caption=" Exsmple of Bank Card", width=200)
 
 if True:
-    df=pd.read_csv("user.csv",names=["Name","ID","Password"])
+    df=pd.read_csv(os.path.join(BASE_DIR, "user.csv"),names=["Name","ID","Password"])
     length=df.shape[0]
     with open("user.csv","r", encoding="utf-8") as file:
          lines=file.readlines()

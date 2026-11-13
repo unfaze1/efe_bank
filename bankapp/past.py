@@ -7,7 +7,7 @@ veri=st.session_state
 veri.past=True
 if veri.past:
    with st.popover("Activites"):
-    with open("balance.csv","r",encoding="utf-8") as file:
+    with open(os.path.join(BASE_DIR, "balance.csv"),"r",encoding="utf-8") as file:
         liste=[]
         dict={}
         i1=["Withdraw","Deposit","Stock Purchase"]
@@ -24,7 +24,7 @@ if veri.past:
 input1=st.text_input("İf you like my first app can you write down your instangram name?🫶❤️🫶 ")
 if input1:
    url=f"https://www.instagram.com/{input1}/"
-   with open("insta.csv","a",encoding="utf-8") as file:
+   with open(os.path.join(BASE_DIR, "insta.csv"),"a",encoding="utf-8") as file:
       file.write(f"{url}\n")
       file.close()
    st.success("Thank Youuu 💕")

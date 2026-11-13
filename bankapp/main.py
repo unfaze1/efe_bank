@@ -89,7 +89,7 @@ def stock():
               st.write(f"Total Cost:**{n4*info1.get('currentPrice')}**. İf you sure enter **'Buy'** button")
               if st.button("Buy"):
                  veri.balance-=n4*info1.get('currentPrice')
-                 with open("balance.csv","a",encoding="utf-8") as file:
+                 with open(os.path.join(BASE_DIR, "balance.csv"),"a",encoding="utf-8") as file:
                     file.write(f"{veri.balance},{veri.ıd},{date.today()},Stock Purchase({info1.get('longName')})\n")
                  st.empty()
                  st.success("Sucessufly make transaction")
@@ -113,7 +113,7 @@ def acnt_page(position):
     button23=st.button("💰Buy Stock",type="primary")
    with col4:
       button20=st.button("📈Show  balance change",type="secondary")
-   with open("balance.csv","r",encoding="utf-8") as file:
+   with open(os.path.join(BASE_DIR, "balance.csv"),"r",encoding="utf-8") as file:
       lines=file.readlines()
       if "balance" not in veri:
          veri.balance=0.0
@@ -137,7 +137,7 @@ def acnt_page(position):
             st.empty()
           elif n:
            veri.balance-=n
-           with open("balance.csv","a",encoding="utf-8") as file:
+           with open(os.path.join(BASE_DIR, "balance.csv"),"a",encoding="utf-8") as file:
             file.write(f"{veri.balance},{veri.ıd},{date.today()},Withdraw\n")
            veri.withd=False
            st.rerun()
@@ -149,20 +149,20 @@ def acnt_page(position):
             st.write("if you want make this transaction please enter 'Submit' button")
             if st.button("Confirm Deposit"):
                veri.balance+=n1
-               with open("balance.csv","a",encoding="utf-8") as file:
+               with open(os.path.join(BASE_DIR, "balance.csv"),"a",encoding="utf-8") as file:
                 file.write(f"{veri.balance},{veri.ıd},{date.today()},Deposit\n")
                veri.deposit=False
                st.rerun()
           elif n1 and n1<=1000000:
                veri.balance+=n1
-               with open("balance.csv","a", encoding="utf-8") as file:
+               with open(os.path.join(BASE_DIR, "balance.csv"),"a", encoding="utf-8") as file:
                 file.write(f"{veri.balance},{veri.ıd},{date.today()},Deposit\n")
                veri.deposit=False
                st.rerun()
    if button20:
     veri.graph=True
    if veri.graph:
-     with open("balance.csv","r",encoding="utf-8") as file:
+     with open(os.path.join(BASE_DIR, "balance.csv"),"r",encoding="utf-8") as file:
       lines=file.readlines()
       for line in lines:
         balance,ıd,date1,transaction=line.rstrip().split(",")
@@ -192,7 +192,7 @@ def finance(position):
                   veri.liste.append(ask10)
               
                if  len(veri.liste[-n:])==n:
-                with open("stock.csv","a",encoding="utf-8") as file:
+                with open(os.path.join(BASE_DIR, "stock.csv"),"a",encoding="utf-8") as file:
                   for code in veri.liste[-n:]:
                        file.write(f"{code},{veri.ıd}\n")
                 if len(veri.liste[-n:])==n:
@@ -237,7 +237,7 @@ elif veri.step==1:
             start1.error("Name or ID is already taken !", icon=":material/thumb_up:" )
             time.sleep(5)
             start1.empty()
-           with open("user.csv", "a", encoding="utf-8")as file:
+           with open(os.path.join(BASE_DIR, "user.csv"), "a", encoding="utf-8")as file:
                file.write(f"{veri.name},{veri.ıd},{veri.password}\n")
                file.close()
            user1=User(veri.name,veri.ıd,veri.password)
@@ -257,7 +257,7 @@ elif veri.step==1:
             for line in lines:
               nm,ı,ps=line.rstrip().split(",")
               if veri.ıd == ı and veri.password==ps:
-                with open("user.csv", "a", encoding="utf-8")as file:
+                with open(os.path.join(BASE_DIR, "user.csv"), "a", encoding="utf-8")as file:
                    file.write(f"{nm},{veri.ıd},{veri.password}\n")
                 if button4:
                     veri.step=3
@@ -285,7 +285,7 @@ elif veri.step==3:
          def delet():
            st.write("if you wanted to delete your account enter 'Delete'")
            if st.button("Delete",type="primary"):
-              with open("user.csv","r", encoding="utf-8") as file:
+              with open(os.path.join(BASE_DIR, "user.csv"),"r", encoding="utf-8") as file:
                   lines=file.readlines()
                   for line in lines:
                       name,ıd,password=line.rstrip().split(",")
