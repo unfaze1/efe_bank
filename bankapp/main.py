@@ -225,7 +225,7 @@ elif veri.step==1:
        button1=st.form_submit_button("Log in👤",type="primary")
        button2=st.form_submit_button("Sign in🔐", type="secondary")
      if veri.ıd and button1:
-           with open ("user.csv","r") as file :
+           with open (os.path.join(BASE_DIR, "user.csv"),"r") as file :
             lines=file.readlines()
             for line in lines:
              name,id,passwrd= line.rstrip().split(",")
