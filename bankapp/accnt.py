@@ -5,7 +5,6 @@ from pathlib import Path
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-"user.csv"=
 veri=st.session_state
 yol=Path(__file__).resolve().parent
 st.header("Account Information", divider="blue" )

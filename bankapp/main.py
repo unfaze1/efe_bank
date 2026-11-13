@@ -12,10 +12,7 @@ from pathlib import Path
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-"balance.csv"=os.path.join(BASE_DIR, "balance.csv")
-"insta.csv"=os.path.join(BASE_DIR, "insta.csv")
-"stock.csv"=os.path.join(BASE_DIR, "stock.csv")
-"user.csv"=os.path.join(BASE_DIR, "user.csv")
+
 
 yol=Path(__file__).resolve().parent
 stock1 = [
@@ -246,7 +243,7 @@ elif veri.step==1:
      elif button2 :
          veri.step=2
          time.sleep(2)
-         lines=open("user.csv","r", encoding="utf-8").readlines()
+         lines=open(os.path.join(BASE_DIR, "user.csv"),"r", encoding="utf-8").readlines()
          @st.dialog("Sign İn")     
          def sign():
             with st.form("basic_form"):
@@ -290,9 +287,9 @@ elif veri.step==3:
                   for line in lines:
                       name,ıd,password=line.rstrip().split(",")
                       if ıd==veri.ıd:
-                         df=pd.read_csv("user.csv", names=["Name","ID","Password"]) 
+                         df=pd.read_csv(os.path.join(BASE_DIR, "user.csv"), names=["Name","ID","Password"]) 
                          df=df[df['ID'] != veri.ıd]
-                         df.to_csv("user.csv", index=False, header=False)
+                         df.to_csv(os.path.join(BASE_DIR, "user.csv"), index=False, header=False)
               veri.step=0
               st.rerun()
          delet()
