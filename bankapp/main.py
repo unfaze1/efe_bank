@@ -9,6 +9,14 @@ import math
 import json
 from latest import late as lt
 from pathlib import Path
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+"balance.csv"=os.path.join(BASE_DIR, "balance.csv")
+"insta.csv"=os.path.join(BASE_DIR, "insta.csv")
+"stock.csv"=os.path.join(BASE_DIR, "stock.csv")
+"user.csv"=os.path.join(BASE_DIR, "user.csv")
+
 yol=Path(__file__).resolve().parent
 stock1 = [
     # ABD 
