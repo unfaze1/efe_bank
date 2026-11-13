@@ -1,7 +1,7 @@
 import yfinance as yf
 import streamlit as st
-
-
+from pathlib import Path
+yol=Path(__file__).resolve().parent
 
 class late:
  def news(position):
@@ -24,7 +24,7 @@ class late:
     with grids:
      with st.popover("Title"):
       st.write(f"{title}")
-     st.image(image,width=200)  
+     st.image(str(yol/image),width=200)  
      grids.metric(metric[1],stock,border=True)
      st.link_button(f"See Latest news...", article,type="primary")
   

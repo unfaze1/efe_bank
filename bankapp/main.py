@@ -8,7 +8,8 @@ import yfinance as yf
 import math
 import json
 from latest import late as lt
-
+from pathlib import Path
+yol=Path(__file__).resolve().parent
 stock1 = [
     # ABD 
     " AAPL - Apple Inc.",
@@ -199,11 +200,11 @@ def finance(position):
 if veri.step==0:
     im1,im2,im3=st.columns([1,1,1])
     with im1:
-     st.image("image2.jpg")
+     st.image(str(yol/"image2.jpg"))
     with im2:
-       st.image("image3.jpg")
+       st.image(str(yol/"image3.jpg"))
     with im3:
-       st.image("image1.jpg")
+       st.image(str(yol/"image1.jpg"))
     button=st.button("Enter✨",width="stretch",type="primary")
     if button:
         veri.step=1
@@ -268,7 +269,7 @@ elif veri.step==3:
       start.success("Succesufly enter account")
       time.sleep(10)
       start.empty()
-      st.logo("efe_bank_logo.jpg", size="large" )
+      st.logo(str(yol/"efe_bank_logo.jpg"), size="large" )
       st.write("Date:",date.today())
       button5=st.menu_button("Settings⚙️",options=["Log out", "❌ Delete account"])
       if button5=="❌ Delete account":
@@ -299,7 +300,7 @@ elif veri.step==3:
 
       col1,col2=st.columns([1,5])
       with col1:
-         st.image("insta.png",width=30)
+         st.image(str(yol/"insta.png"),width=30)
       with col2:
        st.link_button("My İnstagram","https://www.instagram.com/efe_.krks/" )
       page={"İnformations":[st.Page("about.py", title="About Us", icon="ℹ️"),

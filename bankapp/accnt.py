@@ -1,9 +1,11 @@
 import streamlit as st
 from User import User
 import pandas as pd
+from pathlib import Path
 veri=st.session_state
+yol=Path(__file__).resolve().parent
 st.header("Account Information", divider="blue" )
-st.image("Gemini_Generated_Image_5y1rqv5y1rqv5y1r.jpg", caption=" Exsmple of Bank Card", width=200)
+st.image(str(yol/"Gemini_Generated_Image_5y1rqv5y1rqv5y1r.jpg"), caption=" Exsmple of Bank Card", width=200)
 
 if True:
     df=pd.read_csv("user.csv",names=["Name","ID","Password"])
