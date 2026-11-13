@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-
+import os
+"balance.csv"=os.path.join(BASE_DIR, "balance.csv")
 st.title("Past activites ")
 veri=st.session_state
 veri.past=True
