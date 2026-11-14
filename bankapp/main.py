@@ -87,7 +87,7 @@ def stock():
               if st.button("Buy"):
                  veri.balance-=n4*info1.get('currentPrice')
                  with open(os.path.join(BASE_DIR, "balance.csv"),"a",encoding="utf-8") as file:
-                    file.write(f"{veri.balance},{veri.ıd},{date.today()},Stock Purchase({info1.get('longName')})\n")
+                    file.write(f"{veri.balance},{veri.ıd},{date.today()},Stock-Purchase({info1.get('longName')})\n")
                  st.empty()
                  st.success("Sucessufly make transaction")
                  time.sleep(5)
