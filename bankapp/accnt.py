@@ -13,7 +13,7 @@ st.image(str(yol/"Gemini_Generated_Image_5y1rqv5y1rqv5y1r.jpg"), caption=" Exsmp
 if True:
     df=pd.read_csv(os.path.join(BASE_DIR, "user.csv"),names=["Name","ID","Password"])
     length=df.shape[0]
-    with open("user.csv","r", encoding="utf-8") as file:
+    with open(os.path.join(BASE_DIR, "user.csv"),"r", encoding="utf-8") as file:
          lines=file.readlines()
          liste=[]
          giris_sayısı=0
